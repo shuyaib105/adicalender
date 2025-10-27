@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>এডমিশন ক্যালেন্ডার</title>
+    <title>এডমিশন ক্যালেন্ডার </title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,7 +79,47 @@
             font-size: 1em;
             color: #bdc3c7;
         }
+        
+        /* === ডার্ক মোড টগল বাটন স্টাইল পরিবর্তন === */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
+        .theme-toggle {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            border: 2px solid var(--header-footer-text);
+            color: var(--header-footer-text);
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .theme-toggle:hover {
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            animation: none; /* যাতে হোভার করলে স্পিন বন্ধ হয় */
+        }
+        .theme-toggle i {
+            transition: transform 0.3s ease;
+        }
+        
+        .dark-mode .theme-toggle i {
+            color: #f1c40f; /* সূর্যকে সোনালী করার জন্য */
+        }
+        
         /* ট্যাব স্টাইল */
         .tabs {
             display: flex;
@@ -106,6 +146,9 @@
             transition: all 0.3s ease;
             white-space: nowrap;
             flex-shrink: 0;
+            display: flex; /* আইকন ও টেক্সট পাশাপাশি রাখার জন্য */
+            align-items: center;
+            gap: 8px; /* আইকন ও টেক্সটের মাঝে ব্যবধান */
         }
         .tab-button:hover {
             background-color: var(--primary-color);
@@ -242,6 +285,11 @@
             .main-heading {
                 font-size: 1.5em;
             }
+            .theme-toggle {
+                 top: 15px;
+                 right: 10px;
+                 transform: none;
+            }
         }
         
         /* ফেভারিট স্টাইল */
@@ -263,7 +311,7 @@
             color: #f1c40f;
         }
         
-        /* আপডেট তথ্য স্টাইল */
+        /* আপডেট তথ্য স্টাইল পরিবর্তন */
         .update-info {
             text-align: center;
             margin: 10px 0 20px 0;
@@ -272,6 +320,19 @@
             border-radius: 5px;
             font-size: 0.9em;
             color: var(--text-color);
+            display: flex; /* আইকনের জন্য */
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .update-info strong {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--secondary-color);
+        }
+        .update-info i {
+            color: var(--danger-color);
         }
         
         /* আবেদন ফি স্টাইল */
@@ -347,22 +408,6 @@
             font-size: 0.9em;
         }
 
-        /* ডার্ক মোড টগল বাটন */
-        .theme-toggle {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--header-footer-text);
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .theme-toggle:hover {
-            transform: rotate(30deg);
-        }
-
         /* ফিল্টার স্টাইল */
         .filter-container {
             display: flex;
@@ -413,23 +458,19 @@
 <div class="container">
     <h2 class="main-heading">ইউনিভার্সিটি এডমিশন ক্যালেন্ডার ২০২৫-২০২৬</h2>
     
-    <!-- আপডেট তথ্য -->
     <div class="update-info">
-        <strong>সর্বশেষ আপডেট:</strong> ২৭ অক্টোবর,২০২৫ | ১:০০ PM 
+        <strong><i class="fas fa-bullhorn"></i>সর্বশেষ আপডেট:</strong> ২৭ অক্টোবর,২০২৫ | ১:০০ PM 
     </div>
     
-    <!-- ট্যাব বাটন -->
     <div class="tabs">
-        <button class="tab-button active" onclick="openTab('admission-tab')">ক্যালেন্ডার</button>
-        <button class="tab-button" onclick="openTab('application-tab')">আবেদন লিংক</button>
-        <button class="tab-button" onclick="openTab('admit-card-tab')">প্রবেশপত্র</button>
-        <button class="tab-button" onclick="openTab('result-tab')">রেজাল্ট লিংক</button>
-        <button class="tab-button" onclick="openTab('photo-tab')">ফটো ভিউ</button>
+        <button class="tab-button active" onclick="openTab('admission-tab')"><i class="fas fa-calendar-alt"></i> ক্যালেন্ডার</button>
+        <button class="tab-button" onclick="openTab('application-tab')"><i class="fas fa-paper-plane"></i> আবেদন লিংক</button>
+        <button class="tab-button" onclick="openTab('admit-card-tab')"><i class="fas fa-id-card-alt"></i> প্রবেশপত্র</button>
+        <button class="tab-button" onclick="openTab('result-tab')"><i class="fas fa-poll"></i> রেজাল্ট লিংক</button>
+        <button class="tab-button" onclick="openTab('photo-tab')"><i class="fas fa-image"></i> ফটো ভিউ</button>
     </div>
     
-    <!-- এডমিশন ক্যালেন্ডার ট্যাব -->
     <div id="admission-tab" class="tab-content active">
-        <!-- মাসভিত্তিক ফিল্টার -->
         <div class="filter-container" id="month-filter">
             <button class="filter-btn active" data-month="all">সব মাস</button>
           
@@ -442,7 +483,6 @@
         </div>
         <div class="month-indicator" id="month-indicator">সব মাসের ভর্তি পরীক্ষা</div>
         
-        <!-- ফেভারিট সেকশন -->
         <div class="favorite-section" id="favorite-section" style="display: none;">
             <h3><i class="fas fa-star"></i> আপনার ফেভারিট বিশ্ববিদ্যালয়</h3>
             <div class="table-responsive">
@@ -456,13 +496,11 @@
                         </tr>
                     </thead>
                     <tbody id="favorite-data">
-                        <!-- ফেভারিট আইটেম এখানে যোগ হবে -->
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
         </div>
         
-        <!-- সব বিশ্ববিদ্যালয় সেকশন -->
         <div class="table-responsive">
             <table class="classic-table">
                 <thead>
@@ -474,9 +512,6 @@
                     </tr>
                 </thead>
                 <tbody id="admission-data">
-                    <!-- অক্টোবর মাস -->
-                                        
-                    <!-- নভেম্বর মাস -->
                     <tr id="event-1" data-month="11">
                         <td><button class="favorite-btn" onclick="toggleFavorite(1)"><i class="fas fa-star"></i></button></td>
                         <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (আইবিএ ইউনিট)</td></font>
@@ -490,7 +525,6 @@
                         <td class="time-left" id="countdown-2">Loading...</td>
                     </tr>
                     
-                    <!-- ডিসেম্বর মাস -->
                     <tr id="event-3" data-month="12">
                         <td><button class="favorite-btn" onclick="toggleFavorite(3)"><i class="fas fa-star"></i></button></td>
                         <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (গ ইউনিট)</td></font>
@@ -552,7 +586,6 @@
                         <td class="time-left" id="countdown-12">Loading...</td>
                     </tr>
                     
-                    <!-- জানুয়ারি মাস -->
                     <tr id="event-13" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(13)"><i class="fas fa-star"></i></button></td>
                         <td>চট্টগ্রাম বিশ্ববিদ্যালয় (এ ইউনিট)</td>
@@ -698,7 +731,6 @@
                         <td class="time-left" id="countdown-36">Loading...</td>
                     </tr>
                     
-                    <!-- মার্চ মাস -->
                     <tr id="event-37" data-month="3">
                         <td><button class="favorite-btn" onclick="toggleFavorite(37)"><i class="fas fa-star"></i></button></td>
                         <td>গুচ্ছ (গ ইউনিট)</td>
@@ -706,7 +738,6 @@
                         <td class="time-left" id="countdown-37">Loading...</td>
                     </tr>
                     
-                    <!-- এপ্রিল মাস -->
                     <tr id="event-38" data-month="4">
                         <td><button class="favorite-btn" onclick="toggleFavorite(38)"><i class="fas fa-star"></i></button></td>
                         <td>গুচ্ছ (খ ইউনিট)</td>
@@ -724,7 +755,6 @@
         </div>
     </div>
     
-    <!-- আবেদন লিংক ট্যাব -->
     <div id="application-tab" class="tab-content">
         <div class="table-responsive">
             <table class="classic-table">
@@ -799,7 +829,6 @@
         </div>
     </div>
     
-    <!-- প্রবেশপত্র ট্যাব -->
     <div id="admit-card-tab" class="tab-content">
         <div class="table-responsive">
             <table class="classic-table">
@@ -830,7 +859,6 @@
         </div>
     </div>
     
-    <!-- রেজাল্ট লিংক ট্যাব -->
     <div id="result-tab" class="tab-content">
         <div class="table-responsive">
             <table class="classic-table">
@@ -854,14 +882,12 @@
         </div>
     </div>
     
-    <!-- ফটো ভিউ ট্যাব -->
     <div id="photo-tab" class="tab-content">
         <h3 class="main-heading">সার্কুলার ফটো গ্যালারি</h3>
         <div class="photo-counter" id="photo-counter">মোট ফটো: ১০টি</div>
         
         <div class="photo-gallery" id="photo-gallery">
-            <!-- ফটো কার্ডগুলো এখানে যোগ হবে -->
-        </div>
+            </div>
     </div>
 </div>
 
