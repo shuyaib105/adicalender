@@ -111,10 +111,15 @@
         }
 
         /* ট্যাব স্টাইল */
-        .tabs {
+        .tabs-wrapper {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin: 20px 0;
             border-bottom: 2px solid var(--border-color);
+        }
+        .tabs {
+            display: flex;
             flex-wrap: nowrap;
             overflow-x: auto;
             scrollbar-width: none;
@@ -157,6 +162,29 @@
             display: block;
         }
 
+        /* প্রিন্ট বাটন স্টাইল */
+        .print-btn {
+            padding: 8px 15px;
+            background-color: #1abc9c; /* সবুজ/টিয়াল */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+            flex-shrink: 0;
+        }
+        .print-btn:hover {
+            background-color: #16a085;
+        }
+
+
         /* মূল কন্টেন্ট হেডিং */
         .main-heading {
             color: var(--secondary-color);
@@ -196,6 +224,12 @@
         }
         .classic-table tbody tr:hover {
             background-color: rgba(0, 123, 255, 0.1);
+        }
+        .dark-mode .classic-table tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .dark-mode .classic-table tbody tr:hover {
+            background-color: rgba(77, 171, 247, 0.1);
         }
 
         /* বিশেষ তথ্যের স্টাইল */
@@ -239,6 +273,9 @@
             background-color: rgba(255, 249, 230, 0.5);
             border-radius: 8px;
             border-left: 4px solid #f1c40f;
+        }
+        .dark-mode .favorite-section {
+            background-color: rgba(46, 38, 0, 0.5);
         }
         .favorite-section h3 {
             margin-top: 0;
@@ -323,6 +360,9 @@
             margin: 10px 0 20px 0;
             border-left: 5px solid var(--secondary-color);
         }
+        .dark-mode .update-section {
+             background-color: rgba(0, 51, 102, 0.5);
+        }
 
         .update-header {
             display: flex;
@@ -339,6 +379,9 @@
             font-size: 0.85em;
             color: #666;
             margin-bottom: 5px;
+        }
+        .dark-mode .update-time {
+             color: #ccc;
         }
 
         .marquee-container {
@@ -432,6 +475,74 @@
             cursor: pointer;
             line-height: 1;
         }
+        
+        /* ---- ডেভেলপার ও সহযোগী কার্ড স্টাইল (উন্নত UI) ---- */
+        .developer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .developer-card {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            background-color: var(--background);
+        }
+        .dark-mode .developer-card {
+            background-color: #2a2a2a;
+            border-color: #555;
+        }
+        
+        .developer-card h4 {
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .developer-card h4.co-worker-heading {
+             color: #d35400; /* কমলা রঙ */
+        }
+        
+        /* ডেভেলপার লিংকের স্টাইল */
+        .developer-links p {
+            font-size: 0.9em;
+            margin: 5px 0;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .developer-links a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .developer-links a:hover {
+            text-decoration: underline;
+            color: var(--secondary-color);
+        }
+        
+        .developer-links p i {
+            width: 18px; 
+            text-align: center;
+            color: #555;
+        }
+        .dark-mode .developer-links p i {
+            color: #ccc;
+        }
+
+        /* ---- উন্নত UI স্টাইল শেষ ---- */
+
 
         /* নতুন সার্চ বারের জন্য স্টাইল */
         .search-container {
@@ -460,6 +571,77 @@
             border-color: var(--primary-color);
         }
         
+        /* প্রিন্ট ফ্রেন্ডলি স্টাইল */
+        @media print {
+            body {
+                background-color: #fff !important;
+                color: #000 !important;
+            }
+            header, footer, .theme-toggle, .tabs-wrapper, .filter-container, .search-container, 
+            .favorite-btn, .favorite-section h3 i, .floating-about-btn, .update-section,
+            .print-btn, .about-modal, 
+            /* আবেদন/ফলাফল ট্যাবে ফেভারিট কলাম বাদ */
+            .classic-table th:first-child, .classic-table td:first-child, 
+            #favorite-section .classic-table th:first-child, #favorite-section .classic-table td:first-child {
+                display: none !important;
+            }
+            .container {
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+                min-height: auto !important;
+            }
+            .classic-table {
+                border: 1px solid #000;
+            }
+            .classic-table th, .classic-table td {
+                border: 1px solid #000;
+                color: #000 !important;
+                background-color: #fff !important;
+                padding: 8px;
+                font-size: 12pt;
+            }
+            .classic-table th {
+                background-color: #ccc !important;
+            }
+            .main-heading {
+                text-align: left;
+                border-bottom: 2px solid #000;
+                font-size: 16pt;
+            }
+            /* নিশ্চিত করুন যে শুধু ক্যালেন্ডার ট্যাব দেখা যায় */
+            .tab-content {
+                display: none !important;
+            }
+            #admission-tab {
+                display: block !important;
+                padding: 0;
+            }
+            /* URL ও অন্যান্য লিংক প্রিন্ট করুন */
+            .info-link::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                word-break: break-all;
+            }
+            /* প্রিন্ট করার সময় সময় বাকি কলামটি দরকার নেই */
+             .classic-table th:nth-child(4), .classic-table td:nth-child(4) {
+                display: none;
+            }
+            /* ফেভারিট সেকশন প্রিন্ট করুন */
+            #favorite-section {
+                display: block !important;
+                background-color: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                margin-top: 20px;
+            }
+            #favorite-section h3 {
+                color: #000 !important;
+            }
+        }
+        
         /* মোবাইল ডিভাইসের জন্য স্টাইল */
         @media (max-width: 768px) {
             .tab-button {
@@ -485,6 +667,21 @@
                 height: 45px;
                 font-size: 1em;
             }
+            .tabs-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .tabs {
+                border-bottom: 2px solid var(--border-color);
+            }
+            .print-btn {
+                margin: 10px 0;
+                align-self: flex-start;
+                justify-content: center;
+            }
+             .developer-card p {
+                 padding-left: 0;
+             }
         }
     </style>
 </head>
@@ -506,22 +703,29 @@
             <i class="fas fa-bullhorn"></i>সর্বশেষ আপডেট:
         </div>
         <div class="update-time">
-            ১০ নভেম্বর, ২০২৫ | ০৮:৪৮ PM 
+            ১৩ নভেম্বর, ২০২৫ | ১০:৩৫ PM 
         </div>
         <div class="marquee-container">
-            <marquee class="update-marquee" behavior="scroll" direction="left" scrollamount="5">📢 বিইউপির ভর্তি পরীক্ষার সংশোধিত তারিখ যুক্ত করা হয়েছে: FASS (জানু ১০), FSSS, FST, FOE (জানু ১৭), FBS (জানু ৯)। 
-             📌৩৭ সরকারি মেডিকেল কলেজের আসন সংখ্যা পুনর্বিন্যাস করেছে স্বাস্থ্য ও পরিবার কল্যাণ মন্ত্রণালয়।
+            <marquee class="update-marquee" behavior="scroll" direction="left" scrollamount="5">
+           
+📌 হাজী মোহাম্মদ দানেশ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (হাবিপ্রবি) - এর 
 
-📌 মোট আসন থেকে ২৮০টি কমিয়ে এবার মোট ৫১০০ আসন নির্ধারণ করা হয়েছে।
- </marquee>
+আবেদন: ১৬ নভেম্বর - ১৯ ডিসেম্বর
+
+ভর্তি পরীক্ষা আগামী 
+২৬, ২৭ ও ২৮ জানুয়ারি
+-২০২৬ নিজস্ব ব্যবস্থাপনায় বিশ্ববিদ্যালয় ক্যাম্পাসে অনুষ্ঠিত হবে। </marquee>
         </div>
     </div>
 
-    <div class="tabs">
-        <button class="tab-button active" onclick="openTab('admission-tab')"><i class="fas fa-calendar-alt"></i> ক্যালেন্ডার</button>
-        <button class="tab-button" onclick="openTab('application-tab')"><i class="fas fa-paper-plane"></i> আবেদন লিংক</button>
-        <button class="tab-button" onclick="openTab('admit-card-tab')"><i class="fas fa-id-card-alt"></i> প্রবেশপত্র</button>
-        <button class="tab-button" onclick="openTab('result-tab')"><i class="fas fa-poll"></i> রেজাল্ট লিংক</button>
+    <div class="tabs-wrapper">
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('admission-tab')"><i class="fas fa-calendar-alt"></i> ক্যালেন্ডার</button>
+            <button class="tab-button" onclick="openTab('application-tab')"><i class="fas fa-paper-plane"></i> আবেদন লিংক</button>
+            <button class="tab-button" onclick="openTab('admit-card-tab')"><i class="fas fa-id-card-alt"></i> প্রবেশপত্র</button>
+            <button class="tab-button" onclick="openTab('result-tab')"><i class="fas fa-poll"></i> রেজাল্ট লিংক</button>
+        </div>
+        <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট</button>
     </div>
 
     <div id="admission-tab" class="tab-content active">
@@ -571,20 +775,20 @@
                 <tbody id="admission-data">
                     <tr id="event-1" data-month="11">
                         <td><button class="favorite-btn" onclick="toggleFavorite(1)"><i class="fas fa-star"></i></button></td>
-                        <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (আইবিএ ইউনিট)</td></font>
+                        <td>ঢাকা বিশ্ববিদ্যালয় (আইবিএ ইউনিট)</td>
                         <td><span class="exam-date" data-date="2025-11-28T11:00:00">নভেম্বর ২৮, ২০২৫</span></td>
                         <td class="time-left" id="countdown-1">Loading...</td>
                     </tr>
                     <tr id="event-2" data-month="11">
                         <td><button class="favorite-btn" onclick="toggleFavorite(2)"><i class="fas fa-star"></i></button></td>
-                        <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (চ ইউনিট)</td></font>
+                        <td>ঢাকা বিশ্ববিদ্যালয় (চ ইউনিট)</td>
                         <td><span class="exam-date" data-date="2025-11-29T11:00:00">নভেম্বর ২৯, ২০২৫</span></td>
                         <td class="time-left" id="countdown-2">Loading...</td>
                     </tr>
 
                     <tr id="event-3" data-month="12">
                         <td><button class="favorite-btn" onclick="toggleFavorite(3)"><i class="fas fa-star"></i></button></td>
-                        <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (গ ইউনিট)</td></font>
+                        <td>ঢাকা বিশ্ববিদ্যালয় (গ ইউনিট)</td>
                         <td><span class="exam-date" data-date="2025-12-06T11:00:00">ডিসেম্বর ৬, ২০২৫</span></td>
                         <td class="time-left" id="countdown-3">Loading...</td>
                     </tr>
@@ -602,7 +806,7 @@
                     </tr>
                     <tr id="event-4" data-month="12">
                         <td><button class="favorite-btn" onclick="toggleFavorite(4)"><i class="fas fa-star"></i></button></td>
-                        <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (খ ইউনিট)</td></font>
+                        <td>ঢাকা বিশ্ববিদ্যালয় (খ ইউনিট)</td>
                         <td><span class="exam-date" data-date="2025-12-13T11:00:00">ডিসেম্বর ১৩, ২০২৫</span></td>
                         <td class="time-left" id="countdown-4">Loading...</td>
                     </tr>
@@ -632,7 +836,7 @@
                     </tr>
                     <tr id="event-5" data-month="12">
                         <td><button class="favorite-btn" onclick="toggleFavorite(5)"><i class="fas fa-star"></i></button></td>
-                        <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (ক ইউনিট)</td></font>
+                        <td><font color="red">ঢাকা বিশ্ববিদ্যালয় (ক ইউনিট)</font></td>
                         <td><span class="exam-date" data-date="2025-12-20T11:00:00">ডিসেম্বর ২০, ২০২৫</span></td>
                         <td class="time-left" id="countdown-5">Loading...</td>
                     </tr>
@@ -675,7 +879,7 @@
                     </tr>
                     <tr id="event-15" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(15)"><i class="fas fa-star"></i></button></td>
-                        <td>রুয়েট প্রিলিমিনারি</td>
+                        <td><font color="red">রুয়েট প্রিলিমিনারি</font></td>
                         <td><span class="exam-date" data-date="2026-01-03T10:00:00">জানুয়ারি ৩, ২০২৬</span></td>
                         <td class="time-left" id="countdown-15">Loading...</td>
                     </tr>
@@ -709,17 +913,17 @@
                         <td><span class="exam-date" data-date="2026-01-09T11:00:00">জানুয়ারি ৯, ২০২৬</span></td>
                         <td class="time-left" id="countdown-43">Loading...</td>
                     </tr>
-                    <tr id="event-22" data-month="1">
-                        <td><button class="favorite-btn" onclick="toggleFavorite(22)"><i class="fas fa-star"></i></button></td>
-                        <td>চট্টগ্রাম বিশ্ববিদ্যালয় (ডি ইউনিট)</td>
-                        <td><span class="exam-date" data-date="2026-01-10T09:00:00">জানুয়ারি ১০, ২০২৬</span></td>
-                        <td class="time-left" id="countdown-22">Loading...</td>
-                    </tr>
                     <tr id="event-23" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(23)"><i class="fas fa-star"></i></button></td>
                         <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FBS</td>
                         <td><span class="exam-date" data-date="2026-01-09T09:00:00">জানুয়ারি ৯, ২০২৬</span></td>
                         <td class="time-left" id="countdown-23">Loading...</td>
+                    </tr>
+                    <tr id="event-22" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(22)"><i class="fas fa-star"></i></button></td>
+                        <td>চট্টগ্রাম বিশ্ববিদ্যালয় (ডি ইউনিট)</td>
+                        <td><span class="exam-date" data-date="2026-01-10T09:00:00">জানুয়ারি ১০, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-22">Loading...</td>
                     </tr>
                     <tr id="event-24" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(24)"><i class="fas fa-star"></i></button></td>
@@ -758,24 +962,30 @@
                         <td><span class="exam-date" data-date="2026-01-16T10:00:00">জানুয়ারি ১৬, ২০২৬</span></td>
                         <td class="time-left" id="countdown-27">Loading...</td>
                     </tr>
-        <tr id="event-20" data-month="1">
-            <td><button class="favorite-btn" onclick="toggleFavorite(20)"><i class="fas fa-star"></i></button></td>
-            <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FSSS</td>
-            <td><span class="exam-date" data-date="2026-01-17T09:00:00">জানুয়ারি ১৭, ২০২৬</span></td>
-            <td class="time-left" id="countdown-20">Loading...</td>
-        </tr>
-         <tr id="event-78" data-month="1">
-            <td><button class="favorite-btn" onclick="toggleFavorite(78)"><i class="fas fa-star"></i></button></td>
-            <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FST</td>
-            <td><span class="exam-date" data-date="2026-01-17T09:00:00">জানুয়ারি ১৭, ২০২৬</span></td>
-            <td class="time-left" id="countdown-78">Loading...</td>
-        </tr>
-        <tr id="event-79" data-month="1">
-            <td><button class="favorite-btn" onclick="toggleFavorite(79)"><i class="fas fa-star"></i></button></td>
-            <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FOE</td>
-            <td><span class="exam-date" data-date="2026-01-17T09:00:00">জানুয়ারি ১৭, ২০২৬</span></td>
-            <td class="time-left" id="countdown-79">Loading...</td>
-        </tr>
+                    <tr id="event-28" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(28)"><i class="fas fa-star"></i></button></td>
+                        <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FBS 2</td>
+                        <td><span class="exam-date" data-date="2026-01-16T10:00:00">জানুয়ারি ১৬, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-28">Loading...</td>
+                    </tr>
+                    <tr id="event-29" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(29)"><i class="fas fa-star"></i></button></td>
+                        <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FMS</td>
+                        <td><span class="exam-date" data-date="2026-01-16T10:00:00">জানুয়ারি ১৬, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-29">Loading...</td>
+                    </tr>
+                     <tr id="event-20" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(20)"><i class="fas fa-star"></i></button></td>
+                        <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FSSS</td>
+                        <td><span class="exam-date" data-date="2026-01-17T09:00:00">জানুয়ারি ১৭, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-20">Loading...</td>
+                    </tr>
+                     <tr id="event-78" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(78)"><i class="fas fa-star"></i></button></td>
+                        <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি) - FST</td>
+                        <td><span class="exam-date" data-date="2026-01-17T09:00:00">জানুয়ারি ১৭, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-78">Loading...</td>
+                    </tr>
                     <tr id="event-30" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(30)"><i class="fas fa-star"></i></button></td>
                         <td>রাজশাহী বিশ্ববিদ্যালয় (ক ইউনিট)</td>
@@ -791,7 +1001,7 @@
 
                     <tr id="event-31" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(31)"><i class="fas fa-star"></i></button></td>
-                        <td>রুয়েট লিখিত পরীক্ষা</td>
+                        <td><font color="red">রুয়েট লিখিত পরীক্ষা</font></td>
                         <td><span class="exam-date" data-date="2026-01-23T09:00:00">জানুয়ারি ২৩, ২০২৬</span></td>
                         <td class="time-left" id="countdown-31">Loading...</td>
                     </tr>
@@ -818,6 +1028,24 @@
                         <td>মেরিটাইম বিশ্ববিদ্যালয় (FSA)</td>
                         <td><span class="exam-date" data-date="2026-01-30T10:00:00">জানুয়ারি ৩০, ২০২৬</span></td>
                         <td class="time-left" id="countdown-34">Loading...</td>
+                    </tr>
+                     <tr id="event-91" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(91)"><i class="fas fa-star"></i></button></td>
+                        <td>কুমিল্লা বিশ্ববিদ্যালয় (A ইউনিট)</td>
+                        <td><span class="exam-date" data-date="2026-01-30T10:00:00">জানুয়ারি ৩০, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-91">Loading...</td>
+                    </tr>
+                      <tr id="event-92" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(92)"><i class="fas fa-star"></i></button></td>
+                        <td>কুমিল্লা বিশ্ববিদ্যালয় (B ইউনিট)</td>
+                        <td><span class="exam-date" data-date="2026-01-31T10:00:00">জানুয়ারি ৩১, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-92">Loading...</td>
+                    </tr>
+                      <tr id="event-93" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(93)"><i class="fas fa-star"></i></button></td>
+                        <td>কুমিল্লা বিশ্ববিদ্যালয় (সি ইউনিট)</td>
+                        <td><span class="exam-date" data-date="2026-01-31T10:00:00">জানুয়ারি ৩১, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-93">Loading...</td>
                     </tr>
                     <tr id="event-35" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(35)"><i class="fas fa-star"></i></button></td>
@@ -939,7 +1167,7 @@
                             <span class="application-fee">
 “ক” ইউনিট: ১,৩২০৳ (মানবিক)<br>
 “খ” ইউনিট: ১,১০০৳ (বাণিজ্য)<br>
-“গ” ইউনিট: ১,৩२०৳ (বিজ্ঞান)</span> |
+“গ” ইউনিট: ১,৩২০৳ (বিজ্ঞান)</span> |
                             <a class="info-link" href="http://admission.ru.ac.bd" target="_blank">আবেদন করুন</a>
                         </td>
                     </tr>
@@ -1058,15 +1286,28 @@
 <div class="about-modal" id="about-modal">
     <div class="about-content">
         <button class="close-btn" id="close-about-btn"><i class="fas fa-times"></i></button>
-        <h3>ADMISSION INFO LAGBE?</h3>
-        <p>আমরা শিক্ষার্থীদের জন্য দেশের সকল পাবলিক ও স্বায়ত্তশাসিত বিশ্ববিদ্যালয়ের ভর্তি পরীক্ষার সময়সূচি, আবেদনের সময়সীমা, প্রবেশপত্র ডাউনলোড এবং ফলাফল সম্পর্কিত সঠিক ও সময়োপযোগী তথ্য সরবরাহ করি।</p>
+        <h3><i class="fas fa-info-circle" style="color: var(--primary-color);"></i> ADMISSION INFO LAGBE?</h3>
+        <p>আমরা শিক্ষার্থীদের জন্য দেশের সকল পাবলিক বিশ্ববিদ্যালয়ের ভর্তি পরীক্ষার সময়সূচি, আবেদনের সময়সীমা, প্রবেশপত্র ডাউনলোড এবং ফলাফল সম্পর্কিত সঠিক ও সময়োপযোগী তথ্য সরবরাহ করি।</p>
         
-        <div style="text-align: left; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 10px;">
-            <h4 style="color: var(--secondary-color); margin-bottom: 5px; font-weight: 600;">ডেভেলপার:</h4>
-            <p style="margin-top: 0; font-size: 0.9em; line-height: 1.4;">নাম: Md.Shuyaib Islam <br>টেলিগ্রামে যোগাযোগ করুন : <a href="https://t.me/shu_yaib">Shu Yaib</a></p>
-            <h4 style="color: var(--secondary-color); margin-bottom: 5px; font-weight: 600;">সহযোগী:</h4>
-            <p style="margin-top: 0; font-size: 0.9em; line-height: 1.4;">নাম: Marzu আপু<br>বিশেষ ভূমিকা: কন্টেন্ট ভেরিফিকেশন & তথ্য দিয়ে সহায়তা কারী</p>
+        <div class="developer-section">
+            <div class="developer-card">
+                <h4 class="developer-heading"><i class="fas fa-code"></i> ডেভেলপার:</h4>
+                <div class="developer-links">
+                    <p><i class="fas fa-user-circle"></i> নাম: Md.Shuyaib Islam</p>
+                    <p><i class="fas fa-envelope"></i> জিমেইল: <a href="mailto: mdshuyaibislam5050@gmail.com" target="_blank">mdshuyaibislam5050@gmail.com</a></p>
+                    <p><i class="fab fa-github"></i> গিটহাব: <a href="https://github.com/shuyaib105" target="_blank">shuyaib105</a></p>
+                    <p><i class="fas fa-globe"></i> ওয়েবসাইট <a href="https://sybfiles.mnr.world" target="_blank">Visit Graphics Design</a></p>
+                    <p><i class="fab fa-telegram-plane"></i> টেলিগ্রাম: <a href="https://t.me/shu_yaib" target="_blank">Shu Yaib</a></p>
+                </div>
+            </div>
             
+            <div class="developer-card">
+                <h4 class="co-worker-heading"><i class="fas fa-handshake"></i> সহযোগী:</h4>
+                <div class="developer-links">
+                    <p><i class="fas fa-user-circle"></i> নাম: Marzu আপু</p>
+                    <p><i class="fas fa-info-circle"></i> বিশেষ ভূমিকা: কন্টেন্ট ভেরিফিকেশন ও তথ্য দিয়ে সহায়তা কারী</p>
+                </div>
+            </div>
         </div>
         
         <p style="font-size: 0.85em; color: #999; margin-top: 15px;">সফলতার পথে আপনার এই যাত্রায় আমরা আপনার পাশে আছি। </p>
@@ -1119,8 +1360,12 @@
         // নির্বাচিত ট্যাব দেখান
         document.getElementById(tabId).classList.add('active');
 
-        // নির্বাচিত ট্যাব বাটনে active ক্লাস যোগ করুন
-        event.currentTarget.classList.add('active');
+        // ইভেন্টেরcurrentTarget থেকে বাটন অ্যাক্টিভ ক্লাস যোগ করুন
+        // Event listener ensures 'event' is available here
+        if (event && event.currentTarget) {
+            event.currentTarget.classList.add('active');
+        }
+
 
         // ফেভারিট সেকশন শুধুমাত্র এডমিশন ক্যালেন্ডার ট্যাবে দেখান
         const favoriteSection = document.getElementById('favorite-section');
