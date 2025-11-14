@@ -573,18 +573,97 @@
         
         /* প্রিন্ট ফ্রেন্ডলি স্টাইল */
         @media print {
+            /* === লোগো প্রিন্টের জন্য নতুন স্টাইল === */
+            .print-header {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                padding: 10px 0;
+                border-bottom: 2px solid #000;
+            }
+            .print-logo-left {
+                width: 15%; /* লোগোর আকার নিয়ন্ত্রণ */
+                max-width: 80px;
+                height: auto;
+            }
+             .print-logo-right {
+                width: 15%; /* লোগোর আকার নিয়ন্ত্রণ */
+                max-width: 80px;
+                height: auto;
+            }
+            .print-title {
+                text-align: center;
+                flex-grow: 1;
+                font-size: 1.5em;
+                font-weight: 700;
+                color: #000;
+            }
+            /* ================================= */
+            
+            /* নতুন: পিডিএফ ফুটার স্টাইল */
+            .pdf-footer-info {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                font-size: 10pt;
+                text-align: center;
+                color: #555;
+                border-top: 1px solid #ccc;
+                padding: 5px 0;
+                background-color: #fff;
+                z-index: 9999; /* নিশ্চিত করে যেন উপরে থাকে */
+            }
+
+            /* নতুন: পিডিএফ হেডার স্টাইল (আপডেট টাইম) */
+             .pdf-header-info {
+                position: fixed;
+                top: 0;
+                right: 0;
+                font-size: 9pt;
+                color: #555;
+                padding: 5px 10px;
+                z-index: 9999;
+            }
+            
+            /* নতুন: পিডিএফ ফুটার ও হেডার প্রিন্টের জন্য ডিসপ্লে ব্লক করা */
+            .pdf-footer-info, .pdf-header-info {
+                display: block !important;
+            }
+
+
             body {
                 background-color: #fff !important;
                 color: #000 !important;
             }
             header, footer, .theme-toggle, .tabs-wrapper, .filter-container, .search-container, 
-            .favorite-btn, .favorite-section h3 i, .floating-about-btn, .update-section,
-            .print-btn, .about-modal, 
+            .favorite-btn, .favorite-section h3 i, .floating-about-btn, 
+            .print-btn, .about-modal, .update-time, .update-header, .marquee-container,
             /* আবেদন/ফলাফল ট্যাবে ফেভারিট কলাম বাদ */
             .classic-table th:first-child, .classic-table td:first-child, 
             #favorite-section .classic-table th:first-child, #favorite-section .classic-table td:first-child {
                 display: none !important;
             }
+            
+            /* আপডেট সেকশন পুরোটা লুকানোর পর শুধু Marquee-এর টেক্সটটুকু উপরে প্রিন্ট করুন */
+             .update-section {
+                 display: block !important;
+                 padding: 0 !important;
+                 border: none !important;
+                 border-left: none !important;
+                 margin: 5px 0 !important;
+             }
+             .update-section::before {
+                 content: "📌 সর্বশেষ ঘোষণা: " attr(data-marquee-text);
+                 display: block;
+                 font-size: 10pt;
+                 color: #dc3545;
+                 font-weight: 600;
+                 margin-bottom: 10px;
+             }
+
+
             .container {
                 box-shadow: none !important;
                 padding: 0 !important;
@@ -610,6 +689,7 @@
                 text-align: left;
                 border-bottom: 2px solid #000;
                 font-size: 16pt;
+                margin-top: 10px !important; /* প্রিন্ট হেডারের পরে সামান্য ব্যবধান */
             }
             /* নিশ্চিত করুন যে শুধু ক্যালেন্ডার ট্যাব দেখা যায় */
             .tab-content {
@@ -695,26 +775,30 @@
     </button>
 </header>
 
+<div class="print-header" style="display: none;">
+    <img src="http://noteinfolagbe.ct.ws/wp-content/uploads/2025/11/IMG_20251114_085452_518.jpg" alt="Logo 1" class="print-logo-left">
+    <div class="print-title">ইউনিভার্সিটি এডমিশন ক্যালেন্ডার ২০২৫-২০২৬</div>
+    <img src="http://noteinfolagbe.ct.ws/wp-content/uploads/2025/11/IMG_20251114_085443_104.jpg" alt="Logo 2" class="print-logo-right">
+</div>
 <div class="container">
     <h2 class="main-heading">ইউনিভার্সিটি এডমিশন ক্যালেন্ডার ২০২৫-২০২৬</h2>
 
-    <div class="update-section">
+    <div class="update-section" id="update-section">
         <div class="update-header">
             <i class="fas fa-bullhorn"></i>সর্বশেষ আপডেট:
         </div>
-        <div class="update-time">
-            ১৩ নভেম্বর, ২০২৫ | ১০:৩৫ PM 
+        <div class="update-time" id="latest-update-time">
+            ১৪ নভেম্বর, ২০২৫ | ০৪:৩১ PM 
         </div>
         <div class="marquee-container">
-            <marquee class="update-marquee" behavior="scroll" direction="left" scrollamount="5">
+            <marquee class="update-marquee" id="update-marquee-text" behavior="scroll" direction="left" scrollamount="5">
            
-📌 হাজী মোহাম্মদ দানেশ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (হাবিপ্রবি) - এর 
+ কৃষি গুচ্ছের ভর্তি পরীক্ষা ৩ জানুয়ারি 
 
-আবেদন: ১৬ নভেম্বর - ১৯ ডিসেম্বর
+(দুপুর ২ টা থেকে ৩ টা) & 
 
-ভর্তি পরীক্ষা আগামী 
-২৬, ২৭ ও ২৮ জানুয়ারি
--২০২৬ নিজস্ব ব্যবস্থাপনায় বিশ্ববিদ্যালয় ক্যাম্পাসে অনুষ্ঠিত হবে। </marquee>
+কৃষি গুচ্ছের আবেদন শুরু ২৫ নভেম্বর থেকে, চলবে ১৫ ডিসেম্বর পর্যন্ত।
+</marquee>
         </div>
     </div>
 
@@ -725,7 +809,7 @@
             <button class="tab-button" onclick="openTab('admit-card-tab')"><i class="fas fa-id-card-alt"></i> প্রবেশপত্র</button>
             <button class="tab-button" onclick="openTab('result-tab')"><i class="fas fa-poll"></i> রেজাল্ট লিংক</button>
         </div>
-        <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট</button>
+        <button class="print-btn" onclick="prepareForPrint()"><i class="fas fa-print"></i> প্রিন্ট</button>
     </div>
 
     <div id="admission-tab" class="tab-content active">
@@ -876,6 +960,14 @@
                         <td>চট্টগ্রাম বিশ্ববিদ্যালয় (বি ইউনিট)</td>
                         <td><span class="exam-date" data-date="2026-01-03T09:00:00">জানুয়ারি ৩, ২০২৬</span></td>
                         <td class="time-left" id="countdown-14">Loading...</td>
+                    </tr>
+                   
+                    <tr id="event-86" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(86)"><i class="fas fa-star"></i></button></td>
+                        <td>
+কৃষি গুচ্ছ অধিভুক্ত ৯ কৃষি বিশ্ববিদ্যালয়</td>
+                        <td><span class="exam-date" data-date="2026-01-03T09:00:00">জানুয়ারি ৩, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-86">Loading...</td>
                     </tr>
                     <tr id="event-15" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(15)"><i class="fas fa-star"></i></button></td>
@@ -1181,6 +1273,14 @@
                             <a class="info-link" href="https://admission.jnu.ac.bd/" target="_blank">আবেদন করুন</a>
                         </td>
                     </tr>
+                     <tr>
+                        <td>
+কৃষি গুচ্ছ অধিভুক্ত ৯ কৃষি বিশ্ববিদ্যালয়</td>
+                        <td class="deadline">২৫ নভেম্বর - ১৫ ডিসেম্বর</td>
+                        <td>
+                            <a class="info-link" href="https://admission.cu.ac.bd/" target="_blank">আবেদন করুন</a>
+                        </td>
+                    </tr>
                     <tr>
                         <td>চট্টগ্রাম বিশ্ববিদ্যালয়</td>
                         <td class="deadline">০১ ডিসেম্বর - ১৫ ডিসেম্বর</td>
@@ -1279,6 +1379,8 @@
     <p>এই সাইটটি শিক্ষার্থীদের সহায়তার জন্য তৈরি করা হয়েছে।</p>
 </footer>
 
+<div class="pdf-header-info" id="pdf-header-info" style="display: none;"></div>
+<div class="pdf-footer-info" id="pdf-footer-info" style="display: none;">Developed By Shuyaib Islam | <span id="pdf-generation-time"></span></div>
 <button class="floating-about-btn" id="about-btn">
     <i class="fas fa-info-circle"></i>
 </button>
@@ -1315,6 +1417,39 @@
 </div>
 
 <script>
+    // তারিখ ও সময় ফরম্যাট করার ফাংশন
+    function formatDateTime(date) {
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        };
+        return date.toLocaleDateString('bn-BD', options).replace(/এএম|পিএম/i, (match) => match.toUpperCase());
+    }
+
+    // PDF প্রিন্টের জন্য প্রস্তুত করার ফাংশন (নতুন)
+    function prepareForPrint() {
+        // 1. সর্বশেষ আপডেটের সময় সংগ্রহ ও প্রিন্ট হেডারে সেট করা
+        const latestUpdateTime = document.getElementById('latest-update-time').textContent;
+        document.getElementById('pdf-header-info').innerHTML = `**সর্বশেষ আপডেট:** ${latestUpdateTime}`;
+
+        // 2. পিডিএফ জেনারেশনের সময় ফুটার/হেডারে সেট করা
+        const now = new Date();
+        document.getElementById('pdf-generation-time').textContent = `PDF Generated: ${formatDateTime(now)}`;
+
+        // 3. Marquee টেক্সট আপডেট সেকশনের ডেটা অ্যাট্রিবিউটে রাখা (প্রিন্ট মিডিয়াতে ব্যবহারের জন্য)
+        const marqueeText = document.getElementById('update-marquee-text').textContent.trim();
+        document.getElementById('update-section').setAttribute('data-marquee-text', marqueeText);
+
+
+        // 4. ব্রাউজারের প্রিন্ট ডায়ালগ ওপেন করা
+        window.print();
+    }
+
+
     // ডার্ক মোড টগল ফাংশন
     const themeToggle = document.getElementById('theme-toggle');
     const icon = themeToggle.querySelector('i');
