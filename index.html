@@ -788,16 +788,21 @@
             <i class="fas fa-bullhorn"></i>সর্বশেষ আপডেট:
         </div>
         <div class="update-time" id="latest-update-time">
-            ১৪ নভেম্বর, ২০২৫ | ০৪:৩১ PM 
+            ১৫ নভেম্বর, ২০২৫ | ১০:৪৯ AM 
         </div>
         <div class="marquee-container">
             <marquee class="update-marquee" id="update-marquee-text" behavior="scroll" direction="left" scrollamount="5">
-           
- কৃষি গুচ্ছের ভর্তি পরীক্ষা ৩ জানুয়ারি 
+ ✨ কৃষি গুচ্ছ সংক্রান্ত আপডেট –
 
-(দুপুর ২ টা থেকে ৩ টা) & 
+আবেদনের সময়কালঃ
+✓ শুরু: ২৫ নভেম্বর, ২০২৫
+✓ শেষ: ১৫ ডিসেম্বর, ২০২৫
 
-কৃষি গুচ্ছের আবেদন শুরু ২৫ নভেম্বর থেকে, চলবে ১৫ ডিসেম্বর পর্যন্ত।
+ভর্তি পরীক্ষাঃ
+৩ জানুয়ারি, দুপুর ২ টা হতে বিকাল ৩ টা
+
+
+✓ সেকেন্ড টাইম: আছে 
 </marquee>
         </div>
     </div>
@@ -809,7 +814,7 @@
             <button class="tab-button" onclick="openTab('admit-card-tab')"><i class="fas fa-id-card-alt"></i> প্রবেশপত্র</button>
             <button class="tab-button" onclick="openTab('result-tab')"><i class="fas fa-poll"></i> রেজাল্ট লিংক</button>
         </div>
-        <button class="print-btn" onclick="prepareForPrint()"><i class="fas fa-print"></i> প্রিন্ট</button>
+        <button class="print-btn" onclick="prepareForPrint()"><i class="fas fa-print"></i>এডমিশান ক্যালেন্ডার প্রিন্ট করুন</button>
     </div>
 
     <div id="admission-tab" class="tab-content active">
@@ -968,6 +973,12 @@
 কৃষি গুচ্ছ অধিভুক্ত ৯ কৃষি বিশ্ববিদ্যালয়</td>
                         <td><span class="exam-date" data-date="2026-01-03T09:00:00">জানুয়ারি ৩, ২০২৬</span></td>
                         <td class="time-left" id="countdown-86">Loading...</td>
+                    </tr>
+                    <tr id="event-22" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(22)"><i class="fas fa-star"></i></button></td>
+                        <td>চট্টগ্রাম বিশ্ববিদ্যালয় (ডি ইউনিট)</td>
+                        <td><span class="exam-date" data-date="2026-01-03T09:00:00">জানুয়ারি ৩, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-22">Loading...</td>
                     </tr>
                     <tr id="event-15" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(15)"><i class="fas fa-star"></i></button></td>
@@ -1216,7 +1227,15 @@
                         <td class="deadline">১১ নভেম্বর- ২১ নভেম্বর </td>
                         <td>
                             <span class="application-fee">১০০০ ৳</span> |
-                            <a class="info-link" href="https://admission.mist.ac.bd/" target="_blank">আবেদন করুন</a>
+                            <a class="info-link" href="http://dgme.teletalk.com.bd/" target="_blank">আবেদন করুন</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>AFMC</td>
+                        <td class="deadline">১২ নভেম্বর - ২৪ নভেম্বর </td>
+                        <td>
+                            <span class="application-fee">১০০০ ৳</span> |
+                            <a class="info-link" href="http://afmc.teletalk.com.bd/" target="_blank">আবেদন করুন</a>
                         </td>
                     </tr>
                     
@@ -1232,6 +1251,7 @@
                         <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি)</td>
                         <td class="deadline">১০ নভেম্বর - ৩০ নভেম্বর</td>
                         <td>
+                            <span class="application-fee">ফ্যাকাল্টি প্রতি: ১,১০০৳</span> |
                             <a class="info-link" href="https://admission.bup.edu.bd/Admission/Home" target="_blank">আবেদন করুন</a>
                         </td>
                     </tr>
@@ -1274,11 +1294,21 @@
                         </td>
                     </tr>
                      <tr>
+                           <tr>
+                        <td>জগন্নাথ বিশ্ববিদ্যালয় </td>
+                        <td class="deadline">২৩ নভেম্বর -০৭ ডিসেম্বর</td>
                         <td>
-কৃষি গুচ্ছ অধিভুক্ত ৯ কৃষি বিশ্ববিদ্যালয়</td>
+                            <span class="application-fee">
+ইউনিট ভেদে
+১,০০০৳ বা ৭০০৳</span> |
+                            <a class="info-link" href="https://ju-admission.org/" target="_blank">আবেদন করুন</a>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td> কৃষি বিশ্ববিদ্যালয়</td>
                         <td class="deadline">২৫ নভেম্বর - ১৫ ডিসেম্বর</td>
                         <td>
-                            <a class="info-link" href="https://admission.cu.ac.bd/" target="_blank">আবেদন করুন</a>
+                            <a class="info-link" href="https://acas.edu.bd/" target="_blank">আবেদন করুন</a>
                         </td>
                     </tr>
                     <tr>
@@ -1311,13 +1341,43 @@
                         <th>প্রবেশপত্র ডাউনলোডের সময়সীমা</th>
                         <th>লিংক</th>
                     </tr>
-                </thead>
+                </thead><centre ><i>
+               <b> <h5>নোট:</b> <font color="red">BE</font> মানে <font color="red">Before exam</font> অর্থাৎ, <u>পরীক্ষার শুরুর আগে অব্দি ডাউনলোড করা যাবে।</centre></h5></i></u>
                 <tbody>
                     <tr>
+                        <td>মেডিকেল </td>
+                        <td class="deadline">০৭ - ০৯ ডিসেম্বর</td>
+                        <td>
+                            <a class="info-link" href="http://dgme.teletalk.com.bd/" target="_blank">প্রবেশপত্র ডাউনলোড</a>
+                        </td>
+                    </tr>
+                       <tr>
+                        <td>AFMC</td>
+                        <td class="deadline">১৪ - ১৯ ডিসেম্বর</td>
+                        <td>
+                            <a class="info-link" href="http://afmc.teletalk.com.bd/" target="_blank">প্রবেশপত্র ডাউনলোড</a>
+                        </td>
+                    </tr>
+<tr>
                         <td>মিলিটারি ইনস্টিটিউট অব সায়েন্স অ্যান্ড টেকনোলজি (এমআইএসটি)</td>
                         <td class="deadline">১৫ ডিসেম্বর - BE</td>
                         <td>
                             <a class="info-link" href="http://mist.teletalk.com.bd/admitcard/" target="_blank">প্রবেশপত্র ডাউনলোড</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>বুটেক্স</td>
+                        <td class="deadline">২৩ - ৩০ ডিসেম্বর</td>
+                        <td>
+                            <a class="info-link" href="http://but.teletalk.com.bd/" target="_blank">প্রবেশপত্র ডাউনলোড</a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি)</td>
+                        <td class="deadline">০১ জানুয়ারি - BE</td>
+                        <td>
+                            <a class="info-link" href="https://admission.bup.edu.bd/Admission/Home" target="_blank">প্রবেশপত্র ডাউনলোড</a>
                         </td>
                     </tr>
                     <tr>
@@ -1327,6 +1387,7 @@
                             <a class="info-link" href="https://applyonline.bmu.edu.bd/Admission/Home" target="_blank">প্রবেশপত্র ডাউনলোড</a>
                         </td>
                     </tr>
+                    
                     <tr>
                         <td>বুয়েট</td>
                         <td class="deadline">১৭ ডিসেম্বর পর থেকে শুরু</td>
@@ -1355,19 +1416,58 @@
                 <thead>
                     <tr>
                         <th>বিশ্ববিদ্যালয়</th>
-                        <th>রেজাল্ট স্ট্যাটাস</th>
+                        <th>রেজাল্ট তারিখ</th>
                         <th>লিংক</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>ঢাকা বিশ্ববিদ্যালয়</td>
-                        <td class="result-pending">প্রকাশিত হয়নি</td>
+                        <td>মিলিটারি ইনস্টিটিউট অব সায়েন্স অ্যান্ড টেকনোলজি (এমআইএসটি)</td>
+                        <td class="result-pending">১৫ ডিসেম্বর (শর্টলিস্ট)</td>
                         <td>
-                            <a class="info-link" href="https://admission.eis.du.ac.bd/bn/408b7c8ad06e4d9954fa2d948a01f508" target="_blank">রেজাল্ট দেখুন</a>
+                            <a class="info-link" href="https://admission.mist.ac.bd/eligible-list/index.html" target="_blank">রেজাল্ট দেখুন</a>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি)</td>
+                        <td class="result-pending">১৪ জানুয়ারি ও
+২০ জানুয়ারি</td>
+                        <td>
+                            <a class="info-link" href="https://admission.bup.edu.bd/Admission/Home" target="_blank">রেজাল্ট দেখুন</a>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>বুটেক্স</td>
+                        <td class="result-pending">২১ ডিসেম্বর (যোগ্য প্রার্থী)
+২৫ জানুয়ারি (সম্ভাব্য)</td>
+                        <td>
+                            <a class="info-link" href="https://www.butex.edu.bd/undergraduate-programs/" target="_blank">রেজাল্ট দেখুন</a>
+                        </td>
+                    </tr>
+<tr>
+                        <td>খুলনা বিশ্ববিদ্যালয়</td>
+                        <td class="result-pending">৩০ ডিসেম্বর 
+                        </td>
+                        <td>
+                            <a class="info-link" href="https://apply.ku.ac.bd/" target="_blank">রেজাল্ট দেখুন</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>বুয়েট</td>
+                        <td class="result-pending">৭ ফেব্রুয়ারি</td>
+                        <td>
+                            <a class="info-link" href="https://www.buet.ac.bd/web/#/ugAdmission/1" target="_blank">রেজাল্ট দেখুন</a>
                         </td>
                     </tr>
                     
+                   <tr>
+                        <td>অ্যাভিয়েশন ও অ্যারোস্পেস বিশ্ববিদ্যালয় (এএএইউবি)</td>
+                        <td class="result-pending">১৫ ডিসেম্বর (শর্টলিস্ট)</td>
+                        <td>
+                            <a class="info-link" href="https://aaub.edu.bd/notice" target="_blank">রেজাল্ট দেখুন</a>
+                        </td>
+                    </tr>
+                                        
                 </tbody>
             </table>
         </div>
@@ -1398,7 +1498,8 @@
                     <p><i class="fas fa-user-circle"></i> নাম: Md.Shuyaib Islam</p>
                     <p><i class="fas fa-envelope"></i> জিমেইল: <a href="mailto: mdshuyaibislam5050@gmail.com" target="_blank">mdshuyaibislam5050@gmail.com</a></p>
                     <p><i class="fab fa-github"></i> গিটহাব: <a href="https://github.com/shuyaib105" target="_blank">shuyaib105</a></p>
-                    <p><i class="fas fa-globe"></i> ওয়েবসাইট <a href="https://sybfiles.mnr.world" target="_blank">Visit Graphics Design</a></p>
+                   
+                  
                     <p><i class="fab fa-telegram-plane"></i> টেলিগ্রাম: <a href="https://t.me/shu_yaib" target="_blank">Shu Yaib</a></p>
                 </div>
             </div>
