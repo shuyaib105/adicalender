@@ -117,6 +117,8 @@
             justify-content: space-between;
             margin: 20px 0;
             border-bottom: 2px solid var(--border-color);
+            /* নতুন: বোতামের জন্য অতিরিক্ত ফ্লেক্স র্যাপার */
+            flex-wrap: wrap; 
         }
         .tabs {
             display: flex;
@@ -162,6 +164,13 @@
             display: block;
         }
 
+        /* বাটন র্যাপার: বাটন দুটিকে একই লাইনে রাখার জন্য */
+        .action-buttons {
+            display: flex;
+            gap: 10px; /* বাটনগুলোর মধ্যে সামান্য ব্যবধান */
+            flex-shrink: 0;
+        }
+
         /* প্রিন্ট বাটন স্টাইল */
         .print-btn {
             padding: 8px 15px;
@@ -173,15 +182,33 @@
             font-family: 'Hind Siliguri', sans-serif;
             font-weight: 600;
             font-size: 0.95em;
-            margin-left: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
             transition: background-color 0.3s;
-            flex-shrink: 0;
         }
         .print-btn:hover {
             background-color: #16a085;
+        }
+
+        /* নতুন ডাউনলোড বাটন স্টাইল */
+        .download-btn {
+            padding: 8px 15px;
+            background-color: #e67e22; /* কমলা */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #d35400;
         }
 
 
@@ -639,7 +666,8 @@
             }
             header, footer, .theme-toggle, .tabs-wrapper, .filter-container, .search-container, 
             .favorite-btn, .favorite-section h3 i, .floating-about-btn, 
-            .print-btn, .about-modal, .update-time, .update-header, .marquee-container,
+            .print-btn, .download-btn, .action-buttons, /* নতুন: ডাউনলোড বাটনও লুকান */
+            .about-modal, .update-time, .update-header, .marquee-container,
             /* আবেদন/ফলাফল ট্যাবে ফেভারিট কলাম বাদ */
             .classic-table th:first-child, .classic-table td:first-child, 
             #favorite-section .classic-table th:first-child, #favorite-section .classic-table td:first-child {
@@ -754,10 +782,11 @@
             .tabs {
                 border-bottom: 2px solid var(--border-color);
             }
-            .print-btn {
+            /* নতুন: মোবাইল স্ক্রিনে বাটনগুলোকে নিচে ঠেলে দিন */
+            .action-buttons {
                 margin: 10px 0;
-                align-self: flex-start;
                 justify-content: center;
+                gap: 5px; /* ছোট স্ক্রিনে ব্যবধান কমানো */
             }
              .developer-card p {
                  padding-left: 0;
@@ -812,7 +841,10 @@ HSC= জিপিএ 5 এবং পদার্থ,রসায়ন, গণ�
             <button class="tab-button" onclick="openTab('admit-card-tab')"><i class="fas fa-id-card-alt"></i> প্রবেশপত্র</button>
             <button class="tab-button" onclick="openTab('result-tab')"><i class="fas fa-poll"></i> রেজাল্ট লিংক</button>
         </div>
-        <button class="print-btn" onclick="prepareForPrint()"><i class="fas fa-print"></i>এডমিশান ক্যালেন্ডার প্রিন্ট করুন</button>
+        <div class="action-buttons">
+            <button class="print-btn" onclick="prepareForPrint()"><i class="fas fa-print"></i>এডমিশান ক্যালেন্ডার প্রিন্ট করুন</button>
+            <button class="download-btn" onclick="downloadApp()"><i class="fas fa-download"></i> অ্যাপ ডাউনলোড করুন</button>
+        </div>
     </div>
 
     <div id="admission-tab" class="tab-content active">
@@ -1523,6 +1555,13 @@ IBA-JU, C1 - ৬০০ টাকা</span> |
             hour12: true
         };
         return date.toLocaleDateString('bn-BD', options).replace(/এএম|পিএম/i, (match) => match.toUpperCase());
+    }
+    
+    // নতুন ফাংশন: অ্যাপ ডাউনলোড
+    function downloadApp() {
+        // গুগল ড্রাইভ লিঙ্ক (আপনার নির্দিষ্ট লিঙ্কটি এখানে দিন)
+        const appDownloadLink = 'https://drive.google.com/file/d/1XnACQu65ogWS_BKap2Lle2PXV7OHHXnG/view?usp=drivesdk'; 
+        window.open(appDownloadLink, '_blank');
     }
 
     // PDF প্রিন্টের জন্য প্রস্তুত করার ফাংশন (নতুন)
