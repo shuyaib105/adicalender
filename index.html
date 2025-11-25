@@ -788,11 +788,11 @@
             <i class="fas fa-bullhorn"></i>সর্বশেষ আপডেট:
         </div>
         <div class="update-time" id="latest-update-time">
-            ২১ নভেম্বর, ২০২৫ | ০২:০৮ PM 
+            ২৫ নভেম্বর, ২০২৫ | ০৭:৪৮ PM 
         </div>
         <div class="marquee-container">
             <marquee class="update-marquee" id="update-marquee-text" behavior="scroll" direction="left" scrollamount="5">
-জাতীয় বিশ্ববিদ্যালয়ের আবেদন শুরু ২৩ নভেম্বর থেকে, চলবে ৩১ ডিসেম্বর পর্যন্ত।</marquee>
+ খুলনা প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়ের ভর্তি পরীক্ষা ৩১ জানুয়ারি অনুষ্ঠিত হবে।মিলিটারি ইনস্টিটিউট অফ সায়েন্স এন্ড টেকনোলজি [MIST] এর আবেদন সময়সীমা ২৯ নভেম্বর পর্যন্ত বাড়ানো হয়েছে</marquee>
         </div>
     </div>
 
@@ -1131,6 +1131,12 @@
                         <td>কুমিল্লা বিশ্ববিদ্যালয় (B ইউনিট)</td>
                         <td><span class="exam-date" data-date="2026-01-31T10:00:00">জানুয়ারি ৩১, ২০২৬</span></td>
                         <td class="time-left" id="countdown-92">Loading...</td>
+                          <tr id="event-512" data-month="1">
+                        <td><button class="favorite-btn" onclick="toggleFavorite(512)"><i class="fas fa-star"></i></button></td>
+                        <td><font color="red">কুয়েট</font></td>
+                        <td><span class="exam-date" data-date="2026-01-31T10:00:00">জানুয়ারি ৩১, ২০২৬</span></td>
+                        <td class="time-left" id="countdown-512">Loading...</td>
+                    
                     </tr>
                       <tr id="event-93" data-month="1">
                         <td><button class="favorite-btn" onclick="toggleFavorite(93)"><i class="fas fa-star"></i></button></td>
@@ -1384,8 +1390,8 @@
     const applicationData = [
         {
             university: "বুটেক্স",
-            deadline: "2025-12-11",
-            deadlineText: "১১ নভেম্বর - ১১ ডিসেম্বর",
+            deadline: "2025-11-11",
+            deadlineText: "১১ নভেম্বর - ১১ নভেম্বর",
             fee: "প্রাথমিক: ৩০০৳, চূড়ান্ত: ১,২০০৳",
             link: "http://atwww.butex.edu.bd"
         },
@@ -1412,8 +1418,8 @@
         },
         {
             university: "মিলিটারি ইনস্টিটিউট অব সায়েন্স অ্যান্ড টেকনোলজি (এমআইএসটি)",
-            deadline: "2025-11-26",
-            deadlineText: "০২ নভেম্বর - ২৬ নভেম্বর",
+            deadline: "2025-11-29",
+            deadlineText: "০২ নভেম্বর - ২৯ নভেম্বর",
             fee: '"ক" গ্রুপ: ১২০০৳ | "খ" গ্রুপ: ১৪০০৳',
             link: "https://admission.mist.ac.bd/"
         },
@@ -1498,8 +1504,42 @@
     
     // নতুন ফাংশন: আবেদন ডেটা সর্ট করা এবং টেবিলে রেন্ডার করা।
     function sortAndRenderApplicationData(data) {
-        // ১. ডেডলাইন অনুযায়ী সর্ট করুন (পুরোনো ডেডলাইন আগে)
-        const sortedData = [...data].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+        const today = new Date();
+        // আজকের দিনের জন্য সময় (ঘন্টা, মিনিট, সেকেন্ড) শূন্য করে দিন যাতে শুধুমাত্র তারিখের উপর ভিত্তি করে তুলনা করা যায়
+        today.setHours(0, 0, 0, 0);
+
+        // ১. ডেডলাইন অনুযায়ী সর্ট করার জন্য একটি কাস্টম কম্পারেটর ফাংশন তৈরি করুন
+        const sortedData = [...data].sort((a, b) => {
+            const deadlineA = new Date(a.deadline);
+            const deadlineB = new Date(b.deadline);
+
+            // a-এর ডেডলাইন পার হয়েছে কিনা
+            const isFinishedA = deadlineA < today;
+            // b-এর ডেডলাইন পার হয়েছে কিনা
+            const isFinishedB = deadlineB < today;
+
+            // যদি উভয়ের ডেডলাইন পার না হয়:
+            if (!isFinishedA && !isFinishedB) {
+                // পুরানো ডেডলাইন আগে দেখাও (যেমন, 10 তারিখের ডেডলাইন 15 তারিখের ডেডলাইনের আগে)
+                return deadlineA - deadlineB;
+            } 
+            // যদি উভয়ের ডেডলাইন পার হয়ে যায়:
+            else if (isFinishedA && isFinishedB) {
+                // যে ডেডলাইনটি সম্প্রতি পার হয়েছে সেটি আগে দেখাও (নতুন ডেডলাইন আগে)
+                return deadlineB - deadlineA; 
+            }
+            // যদি শুধুমাত্র a-এর ডেডলাইন পার হয়:
+            else if (isFinishedA && !isFinishedB) {
+                // a-কে নিচে নিয়ে যাও
+                return 1; 
+            }
+            // যদি শুধুমাত্র b-এর ডেডলাইন পার হয়:
+            else if (!isFinishedA && isFinishedB) {
+                // b-কে নিচে নিয়ে যাও
+                return -1; 
+            }
+            return 0; // কোনো পরিবর্তন নেই
+        });
 
         const applicationTableBody = document.querySelector('#application-tab .classic-table tbody');
         applicationTableBody.innerHTML = '';
@@ -1515,12 +1555,13 @@
             const cell2 = row.insertCell();
             cell2.classList.add('deadline');
             
-            const today = new Date();
             const deadlineDate = new Date(item.deadline);
             
             // ডেডলাইন পার হয়ে গেলে লাল রঙ এবং 'সময় শেষ' যোগ করুন
             if (deadlineDate < today) {
                 cell2.innerHTML = `${item.deadlineText} <br> <span style="font-size: 0.8em; color: var(--danger-color);"> (সময় শেষ) </span>`;
+                // ডেডলাইন পার হওয়া রো-কে নিচে আলাদা করার জন্য একটি ক্লাস দিন (যদি দরকার হয়)
+                row.classList.add('deadline-passed');
             } else {
                  cell2.textContent = item.deadlineText;
             }
