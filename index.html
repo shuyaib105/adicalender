@@ -549,7 +549,7 @@
             margin: 20px 0;
             text-align: center;
         }
-        #university-search {
+        #university-search, #application-search {
             padding: 10px;
             width: 80%;
             max-width: 400px;
@@ -560,12 +560,12 @@
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
-        #university-search:focus {
+        #university-search:focus, #application-search:focus {
             outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
-        .dark-mode #university-search {
+        .dark-mode #university-search, .dark-mode #application-search {
             background-color: var(--card-bg);
             color: var(--text-color);
             border-color: var(--primary-color);
@@ -1176,6 +1176,10 @@
     </div>
 
     <div id="application-tab" class="tab-content">
+        <div class="search-container">
+            <input type="text" id="application-search" placeholder="বিশ্ববিদ্যালয় সার্চ করুন..." onkeyup="searchApplicationData()">
+        </div>
+        
         <div class="table-responsive">
             <table class="classic-table">
                 <thead>
@@ -1185,152 +1189,11 @@
                         <th>আবেদন ফি ও লিংক</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>মেরিটাইম বিশ্ববিদ্যালয়</td>
-                        <td class="deadline">২৮ অক্টোবর - ২৭ নভেম্বর</td>
-                        <td>
-                            <span class="application-fee">ইউনিট প্রতি: ৮০০৳</span> |
-                            <a class="info-link" href="https://applyonline.bmu.edu.bd/Admission/Candidate/SelectProgramV3?ecat=4" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ঢাকা বিশ্ববিদ্যালয়</td>
-                        <td class="deadline">২৯ অক্টোবর - ১৬ নভেম্বর</td>
-                        <td>
-                            <span class="application-fee">ক, খ, গ: ১০৫০৳ | চ: ১২৫০৳ | আইবিএ: ১৫০০৳</span> |
-                            <a class="info-link" href="https://admission.eis.du.ac.bd/bn/408b7c8ad06e4d9954fa2d948a01f508" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>মিলিটারি ইনস্টিটিউট অব সায়েন্স অ্যান্ড টেকনোলজি (এমআইএসটি)</td>
-                        <td class="deadline">০২ নভেম্বর - ২৬ নভেম্বর</td>
-                        <td>
-                            <span class="application-fee">"ক" গ্রুপ: ১২০০৳ | "খ" গ্রুপ: ১৪০০৳</span> |
-                            <a class="info-link" href="https://admission.mist.ac.bd/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>মেডিকেল ও ডেন্টাল</td>
-                        <td class="deadline">১১ নভেম্বর- ২১ নভেম্বর </td>
-                        <td>
-                            <span class="application-fee">১০০০ ৳</span> |
-                            <a class="info-link" href="http://dgme.teletalk.com.bd/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AFMC</td>
-                        <td class="deadline">১২ নভেম্বর - ২৪ নভেম্বর </td>
-                        <td>
-                            <span class="application-fee">১০০০ ৳</span> |
-                            <a class="info-link" href="http://afmc.teletalk.com.bd/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    
-                      <tr>
-                        <td>খুলনা বিশ্ববিদ্যালয়</td>
-                        <td class="deadline">০৭ নভেম্বর - ২৭ নভেম্বর</td>
-                        <td>
-                            <span class="application-fee">A,B,C- ১৩০০,  D- ১০০০ tk</span> |
-                            <a class="info-link" href="https://apply.ku.ac.bd/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি)</td>
-                        <td class="deadline">১০ নভেম্বর - ৩০ নভেম্বর</td>
-                        <td>
-                            <span class="application-fee">ফ্যাকাল্টি প্রতি: ১,১০০৳</span> |
-                            <a class="info-link" href="https://admission.bup.edu.bd/Admission/Home" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td>বুটেক্স</td>
-                        <td class="deadline">১১ নভেম্বর - ১১ নভেম্বর</td>
-                        <td>
-                             <span class="application-fee">প্রাথমিক: ৩০০৳,
-চূড়ান্ত: ১,২০০৳</span> |
-                            <a class="info-link" href="http://atwww.butex.edu.bd" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>বুয়েট</td>
-                        <td class="deadline">১৬ নভেম্বর - ২ ডিসেম্বর</td>
-                        <td>
-                              <span class="application-fee">"ক" গ্রুপ: ১৩০০৳ | "খ" গ্রুপ: ১৫০০৳</span> |
-                            <a class="info-link" href="https://www.buet.ac.bd/web/#/ugAdmission/1" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                      <tr>
-                        <td>রাজশাহী বিশ্ববিদ্যালয়</td>
-                        <td class="deadline">২০ নভেম্বর - ৬ ডিসেম্বর</td>
-                        <td>
-                            <span class="application-fee">
-“ক” ইউনিট: ১,৩২০৳ (মানবিক)<br>
-“খ” ইউনিট: ১,১০০৳ (বাণিজ্য)<br>
-“গ” ইউনিট: ১,৩২০৳ (বিজ্ঞান)</span> |
-                            <a class="info-link" href="http://admission.ru.ac.bd" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                      <tr>
-                        <td>জগন্নাথ বিশ্ববিদ্যালয় </td>
-                        <td class="deadline">২০ নভেম্বর -০৩ ডিসেম্বর</td>
-                        <td>
-                            <span class="application-fee">
-এ, বি, সি, ডি: ১,০০০৳ <br >
-ই: ১,২০০৳</span> |
-                            <a class="info-link" href="https://admission.jnu.ac.bd/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                           <tr>
-                        <td>জাতীয় বিশ্ববিদ্যালয় </td>
-                        <td class="deadline">২৩ নভেম্বর - ৩১ ডিসেম্বর</td>
-                        <td>
-                            <span class="application-fee">
-১০০০ টাকা</span> |
-                            <a class="info-link" href="http://www.nu.ac.bd/admissions" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                     <tr>
-                           <tr>
-                        <td>জাহাঙ্গীর বিশ্ববিদ্যালয় </td>
-                        <td class="deadline">২৩ নভেম্বর -০৭ ডিসেম্বর</td>
-                        <td>
-                            <span class="application-fee">
-A,B,C,D - ৮০০ টাকা;
-E - ৭০০ টাকা; 
-IBA-JU, C1 - ৬০০ টাকা</span> |
-                            <a class="info-link" href="https://ju-admission.org/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td> কৃষি বিশ্ববিদ্যালয়</td>
-                        <td class="deadline">২৫ নভেম্বর - ১৫ ডিসেম্বর</td>
-                        <td>
-                            <a class="info-link" href="https://acas.edu.bd/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>চট্টগ্রাম বিশ্ববিদ্যালয়</td>
-                        <td class="deadline">০১ ডিসেম্বর - ১৫ ডিসেম্বর</td>
-                        <td>
-                            <a class="info-link" href="https://admission.cu.ac.bd/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr><tr>
-                        <td>অ্যাভিয়েশন ও অ্যারোস্পেস বিশ্ববিদ্যালয় (এএএইউবি)</td>
-                        <td class="deadline">০৯ ডিসেম্বর - ১১ ডিসেম্বর</td>
-                        <td>
-                             <span class="application-fee">
-প্রাথমিক : ১০০০ ৳ </span> |
-
-                            <a class="info-link" href="https://aaub.teletalk.com.bd/bsc/" target="_blank">আবেদন করুন</a>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody> 
+                </tbody> 
             </table>
         </div>
     </div>
-
     <div id="admit-card-tab" class="tab-content">
         <div class="table-responsive">
             <table class="classic-table">
@@ -1517,6 +1380,179 @@ IBA-JU, C1 - ৬০০ টাকা</span> |
 </div>
 
 <script>
+    // নতুন যোগ করা হয়েছে: আবেদন ডেটার জন্য অ্যারে।
+    const applicationData = [
+        {
+            university: "বুটেক্স",
+            deadline: "2025-12-11",
+            deadlineText: "১১ নভেম্বর - ১১ ডিসেম্বর",
+            fee: "প্রাথমিক: ৩০০৳, চূড়ান্ত: ১,২০০৳",
+            link: "http://atwww.butex.edu.bd"
+        },
+        {
+            university: "ঢাকা বিশ্ববিদ্যালয়",
+            deadline: "2025-11-16",
+            deadlineText: "২৯ অক্টোবর - ১৬ নভেম্বর",
+            fee: "ক, খ, গ: ১০৫০৳ | চ: ১২৫০৳ | আইবিএ: ১৫০০৳",
+            link: "https://admission.eis.du.ac.bd/bn/408b7c8ad06e4d9954fa2d948a01f508"
+        },
+        {
+            university: "মেডিকেল ও ডেন্টাল",
+            deadline: "2025-11-21",
+            deadlineText: "১১ নভেম্বর- ২১ নভেম্বর",
+            fee: "১০০০ ৳",
+            link: "http://dgme.teletalk.com.bd/"
+        },
+        {
+            university: "AFMC",
+            deadline: "2025-11-24",
+            deadlineText: "১২ নভেম্বর - ২৪ নভেম্বর",
+            fee: "১০০০ ৳",
+            link: "http://afmc.teletalk.com.bd/"
+        },
+        {
+            university: "মিলিটারি ইনস্টিটিউট অব সায়েন্স অ্যান্ড টেকনোলজি (এমআইএসটি)",
+            deadline: "2025-11-26",
+            deadlineText: "০২ নভেম্বর - ২৬ নভেম্বর",
+            fee: '"ক" গ্রুপ: ১২০০৳ | "খ" গ্রুপ: ১৪০০৳',
+            link: "https://admission.mist.ac.bd/"
+        },
+        {
+            university: "মেরিটাইম বিশ্ববিদ্যালয়",
+            deadline: "2025-11-27",
+            deadlineText: "২৮ অক্টোবর - ২৭ নভেম্বর",
+            fee: "ইউনিট প্রতি: ৮০০৳",
+            link: "https://applyonline.bmu.edu.bd/Admission/Candidate/SelectProgramV3?ecat=4"
+        },
+        {
+            university: "খুলনা বিশ্ববিদ্যালয়",
+            deadline: "2025-11-27",
+            deadlineText: "০৭ নভেম্বর - ২৭ নভেম্বর",
+            fee: "A,B,C- ১৩০০,  D- ১০০০ tk",
+            link: "https://apply.ku.ac.bd/"
+        },
+        {
+            university: "বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস (বিইউপি)",
+            deadline: "2025-11-30",
+            deadlineText: "১০ নভেম্বর - ৩০ নভেম্বর",
+            fee: "ফ্যাকাল্টি প্রতি: ১,১০০৳",
+            link: "https://admission.bup.edu.bd/Admission/Home"
+        },
+        {
+            university: "বুয়েট",
+            deadline: "2025-12-02",
+            deadlineText: "১৬ নভেম্বর - ২ ডিসেম্বর",
+            fee: '"ক" গ্রুপ: ১৩০০৳ | "খ" গ্রুপ: ১৫০০৳',
+            link: "https://www.buet.ac.bd/web/#/ugAdmission/1"
+        },
+        {
+            university: "জগন্নাথ বিশ্ববিদ্যালয়",
+            deadline: "2025-12-03",
+            deadlineText: "২০ নভেম্বর -০৩ ডিসেম্বর",
+            fee: 'এ, বি, সি, ডি: ১,০০০৳ <br > ই: ১,২০০৳',
+            link: "https://admission.jnu.ac.bd/"
+        },
+        {
+            university: "রাজশাহী বিশ্ববিদ্যালয়",
+            deadline: "2025-12-06",
+            deadlineText: "২০ নভেম্বর - ৬ ডিসেম্বর",
+            fee: '“ক” ইউনিট: ১,৩২০৳ (মানবিক)<br> “খ” ইউনিট: ১,১০০৳ (বাণিজ্য)<br> “গ” ইউনিট: ১,৩২০৳ (বিজ্ঞান)',
+            link: "http://admission.ru.ac.bd"
+        },
+        {
+            university: "জাহাঙ্গীর বিশ্ববিদ্যালয়",
+            deadline: "2025-12-07",
+            deadlineText: "২৩ নভেম্বর -০৭ ডিসেম্বর",
+            fee: 'A,B,C,D - ৮০০ টাকা; E - ৭০০ টাকা; IBA-JU, C1 - ৬০০ টাকা',
+            link: "https://ju-admission.org/"
+        },
+        {
+            university: "অ্যাভিয়েশন ও অ্যারোস্পেস বিশ্ববিদ্যালয় (এএএইউবি)",
+            deadline: "2025-12-11",
+            deadlineText: "০৯ ডিসেম্বর - ১১ ডিসেম্বর",
+            fee: "প্রাথমিক : ১০০০ ৳",
+            link: "https://aaub.teletalk.com.bd/bsc/"
+        },
+        {
+            university: "কৃষি বিশ্ববিদ্যালয়",
+            deadline: "2025-12-15",
+            deadlineText: "২৫ নভেম্বর - ১৫ ডিসেম্বর",
+            fee: null,
+            link: "https://acas.edu.bd/"
+        },
+        {
+            university: "চট্টগ্রাম বিশ্ববিদ্যালয়",
+            deadline: "2025-12-15",
+            deadlineText: "০১ ডিসেম্বর - ১৫ ডিসেম্বর",
+            fee: '১০০০ ৳',
+            link: "https://admission.cu.ac.bd/"
+        },
+        {
+            university: "জাতীয় বিশ্ববিদ্যালয়",
+            deadline: "2025-12-31",
+            deadlineText: "২৩ নভেম্বর - ৩১ ডিসেম্বর",
+            fee: "১০০০ টাকা",
+            link: "http://www.nu.ac.bd/admissions"
+        },
+    ];
+    
+    // নতুন ফাংশন: আবেদন ডেটা সর্ট করা এবং টেবিলে রেন্ডার করা।
+    function sortAndRenderApplicationData(data) {
+        // ১. ডেডলাইন অনুযায়ী সর্ট করুন (পুরোনো ডেডলাইন আগে)
+        const sortedData = [...data].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+
+        const applicationTableBody = document.querySelector('#application-tab .classic-table tbody');
+        applicationTableBody.innerHTML = '';
+
+        sortedData.forEach(item => {
+            const row = applicationTableBody.insertRow();
+            
+            // বিশ্ববিদ্যালয়ের নাম
+            const cell1 = row.insertCell();
+            cell1.textContent = item.university;
+
+            // আবেদনের সময়সীমা (ডেডলাইন)
+            const cell2 = row.insertCell();
+            cell2.classList.add('deadline');
+            
+            const today = new Date();
+            const deadlineDate = new Date(item.deadline);
+            
+            // ডেডলাইন পার হয়ে গেলে লাল রঙ এবং 'সময় শেষ' যোগ করুন
+            if (deadlineDate < today) {
+                cell2.innerHTML = `${item.deadlineText} <br> <span style="font-size: 0.8em; color: var(--danger-color);"> (সময় শেষ) </span>`;
+            } else {
+                 cell2.textContent = item.deadlineText;
+            }
+
+            // আবেদন ফি ও লিংক
+            const cell3 = row.insertCell();
+            cell3.innerHTML = `
+                ${item.fee ? `<span class="application-fee">${item.fee}</span> |` : ''}
+                <a class="info-link" href="${item.link}" target="_blank">আবেদন করুন</a>
+            `;
+            // সার্চের সুবিধার জন্য row-এ একটি অ্যাট্রিবিউট যোগ করা হলো
+            row.setAttribute('data-search', item.university.toUpperCase());
+        });
+    }
+
+    // নতুন ফাংশন: আবেদন ট্যাব-এ সার্চ ফাংশনালিটি
+    function searchApplicationData() {
+        const input = document.getElementById('application-search');
+        const filter = input.value.toUpperCase();
+        const rows = document.querySelectorAll('#application-tab .classic-table tbody tr');
+
+        rows.forEach(row => {
+            const txtValue = row.getAttribute('data-search');
+
+            if (txtValue.indexOf(filter) > -1) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
+
     // তারিখ ও সময় ফরম্যাট করার ফাংশন
     function formatDateTime(date) {
         const options = {
@@ -1859,6 +1895,9 @@ IBA-JU, C1 - ৬০০ টাকা</span> |
 
         // প্রাথমিক অবস্থায় সব মাসের ফিল্টার প্রয়োগ করুন
         applyMonthFilter('all');
+        
+        // আবেদন ডেটা লোড এবং সর্ট করুন (নতুন যোগ করা)
+        sortAndRenderApplicationData(applicationData);
     };
     
 </script>
